@@ -1,0 +1,16 @@
+flask
+pyngrok
+alpaca-py
+torch
+ta
+pandas
+numpy
+scikit-learn
+python-dotenv
+schedule
+scipy
+transformers
+streamlit
+plotly
+streamlit-autorefresh
+requests

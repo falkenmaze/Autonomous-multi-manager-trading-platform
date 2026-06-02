@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hedge Fund Remote Control</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #0e1117; color: white; text-align: center; padding: 20px; }
+        h1 { margin-bottom: 30px; }
+        .btn {
+            background-color: #00d4ff;
+            color: black;
+            border: none;
+            padding: 20px 40px;
+            font-size: 24px;
+            font-weight: bold;
+            border-radius: 12px;
+            cursor: pointer;
+            width: 100%;
+            max-width: 300px;
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.4);
+            transition: transform 0.2s;
+        }
+        .btn.stop {
+            background-color: #ff4b4b;
+            box-shadow: 0 4px 15px rgba(255, 75, 75, 0.4);
+            margin-top: 20px;
+        }
+        .btn:active { transform: scale(0.95); }
+        .status { margin-top: 20px; color: #aaa; }
+        .success { color: #00cc96; display: none; margin-top: 20px; font-size: 18px;}
+        .bypass-msg { 
+            background: #333; color: #ccc; 
+            padding: 10px; margin-top: 30px; border-radius: 8px; font-size: 12px;
+        }
+    </style>
+    <script>
+        function sendCommand(endpoint) {
+            var btn = event.target;
+            var originalText = btn.innerHTML;
+            var status = document.getElementById('statusMsg');
+            
+            btn.disabled = true;
+            btn.innerHTML = "Processing...";
+            status.innerHTML = "Sending command...";
+            
+            fetch(endpoint, { method: 'POST' })
+            .then(response => response.json())
+            .then(data => {
+                status.innerHTML = data.message;
+                btn.disabled = false;
+                btn.innerHTML = originalText;
+                
+                if (data.status === 'success' && endpoint === '/start') {
+                     document.getElementById('successMsg').style.display = 'block';
+                }
+            })
+            .catch(err => {
+                console.error(err);
+                btn.innerHTML = "Error!";
+                status.innerHTML = "Network Error";
+                btn.disabled = false;
+            });
+        }
+    </script>
+</head>
+<body>
+    <h1>AI Hedge Fund<br>Remote Control</h1>
+    
+    <button id="startBtn" class="btn" onclick="sendCommand('/start')">START SYSTEM</button>
+    <button id="stopBtn" class="btn stop" onclick="sendCommand('/stop')">STOP SYSTEM</button>
+    
+    <div id="statusMsg" class="status"></div>
+    <div id="successMsg" class="success">
+        Command Sent!<br>
+        Bot and Dashboard are launching on your laptop.
+    </div>
+    
+    <div class="bypass-msg">
+        <b>Tip:</b> If you see a "Click to Continue" page before this, that is normal security from the tunnel provider.
+    </div>
+</body>
+</html>

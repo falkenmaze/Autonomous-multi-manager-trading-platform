@@ -1,0 +1,33 @@
+# Python bytecode and cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# Environment files (contains credentials and secrets)
+.env
+.env.*
+!.env.example
+
+# IDE and Editor settings
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Testing and diagnostic outputs in this workspace
+diagnostic_output.txt
+error_trace.txt
+test_out.txt
+test_out2.txt
+test_results.txt
+test_results_utf8.txt
+logs/

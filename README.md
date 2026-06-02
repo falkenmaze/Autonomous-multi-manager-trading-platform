@@ -1,10 +1,10 @@
-# Autonomous Multi-Manager Trading Platform (Mini AI Hedge Fund) 🤖💼
+# Autonomous Multi-Manager Trading Platform (Mini AI Hedge Fund)
 
 An autonomous, multi-agent algorithmic trading system designed for real-time market analysis, automated portfolio execution, and risk management. The platform runs a daily asset scanning universe, executes a volatility-aware ensemble of machine learning and mathematical models, dynamically optimizes capital allocation using advanced modern portfolio theory (MVO/HRP), hedges market beta using index positions, and monitors trade risk with institutional safeguards. It features a Streamlit-based live performance dashboard and a Flask-based remote control server exposed via secure local tunnels.
 
 ---
 
-## 📐 System Architecture
+## System Architecture
 
 The following diagram illustrates the flow of data, decisions, and execution across the multi-agent framework:
 
@@ -55,7 +55,7 @@ graph TD
 
 ---
 
-## 🌟 Key Features
+## Key Features
 
 ### 1. Multi-Manager Decision Ensemble
 The decision engine (`EnsembleStrategy`) evaluates signals using multiple independent approaches:
@@ -89,7 +89,7 @@ The decision engine (`EnsembleStrategy`) evaluates signals using multiple indepe
 
 ---
 
-## 📂 Project Directory Structure
+## Project Directory Structure
 
 ```bash
 ├── config.py                 # System hyperparameters, risk settings, and sentiment weights
@@ -124,7 +124,7 @@ The decision engine (`EnsembleStrategy`) evaluates signals using multiple indepe
 
 ---
 
-## ⚙️ Configuration & Tunables
+## Configuration & Tunables
 
 All key operational values are stored in [config.py](file:///c:/Users/shiva/OneDrive/quant_projects/mini_hedge_fund/config.py). Key parameters include:
 
@@ -145,14 +145,14 @@ All key operational values are stored in [config.py](file:///c:/Users/shiva/OneD
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
-### 📋 Prerequisites
+### Prerequisites
 1. **Python 3.8+**
 2. **Node.js** (required to run Localtunnel in `start_remote.bat`)
 3. **Alpaca Brokerage Account** (Paper or Live API keys)
 
-### 🔧 Installation
+### Installation
 
 1. Clone the repository:
    ```bash
@@ -187,31 +187,7 @@ All key operational values are stored in [config.py](file:///c:/Users/shiva/OneD
 
 ---
 
-## 🏃 Running the Platform
-
-### Option A: Standard CLI Run
-To run the autonomous trading agent directly in the terminal:
-```bash
-python main.py
-```
-This starts the engine, scans the market, executes trades, and checks risk parameters on the scheduled interval (30-minute cycles for trading, 5-minute cycles for risk audits).
-
-### Option B: Run Dashboard (Streamlit)
-To visualize performance metrics, open positions, active signals, and the portfolio equity curve:
-```bash
-streamlit run dashboard.py
-```
-A browser window will open automatically at `http://localhost:8501`.
-
-### Option C: Remote Control Mode (Localtunnel)
-To launch the control server, which lets you start and stop the trading bot and dashboard from any device (e.g., your smartphone) through a secure tunnel:
-1. Double-click or run `start_remote.bat` in your console.
-2. The batch script will query `loca.lt` for a security password, print it, and launch a secure tunnel.
-3. Open the provided `.loca.lt` URL in your browser, enter the password, and use the **START** / **STOP** control buttons.
-
----
-
-## 🧪 Testing
+## Testing
 
 The codebase includes an extensive suite of unit and integration tests under the `/tests` directory. To run all verification scripts:
 ```bash
